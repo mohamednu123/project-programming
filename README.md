@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+//memory management and adds .push_back(x)   adds .size() for number of elements adds .clear() to remove all elements adds .erase() to remove specific elements and works with algorithms like sort and find
+//we could have used arrays but that would make it harder to add new items would only limit us to a few items if we wanted to add more it would make us redo the code 
+class food{
+private:    
+    string foodname;
+    float price;
+    
+public: 
+//these are 3 funtions function to return food name and price 
+     food() : foodname(""),price(0){}
+     food(string n, double p) : foodname(n), price(p){} //inittialize the food items gives the private part of it the names "n and p" to be called to the outside funtions
+     string findname(){return foodname;}
+     
+     float findprice(){return price;}
+};
+
+//now we want to display the items with the second class menu
+class Menu{
+    private :
+   food items[10];
+   int size = 0;// this is a dynamic array 
+    public :
+    void lmenu(){
+        //we dont need to return this into another function as we just need it to print the menu as is 
+        /*this shows each items and its price 
+        for example we used pushback to push the item to the next part of the memory after that we added burger to the foodname then we made its price 50 pounds this is why i used the vector library
+        */
+        
+        items[0] = food("burger",50);
+        items[1] = food("Vcola", 700.5);
+        items[2] = food("Basbosa", 500.5);
+        items[3] = food("Basbosa Eshta", 700.5);
+        items[4] = food("Sambosa", 500);
+        items[5] = food("Fries", 900);
+        items[6] = food("Batats", 400);
+        size = 7;
+        
+        //add more items ya gd3an 
+}
+    //this is a loop to show the menu 
+    void showthemenu(){
+        cout<<"This is the menu:\n";
+        for (int i = 0; i < size;i++){
+            cout <<i+1 << "--" << items[i].findname() << " - " << items[i].findprice()<< " l.e" << endl;
+            }
+}
+};
+//to test this dy tagrobah emsa7oha lma t3mlo el ba2y
+int main()
+{ 
+    Menu menu;
+    menu.lmenu();
+    menu.showthemenu();
+    return 0;
+    
+}
