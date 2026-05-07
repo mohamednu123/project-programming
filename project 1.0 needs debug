@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include<vector>
 using namespace std;
@@ -19,23 +18,23 @@ public:
 
 //now we want to display the items with the second class menu
 class Menu{
-    private:
+    private :
     vector<food> items; // this is a dynamic array 
-    public:
+    public :
     void lmenu(){
         //we dont need to return this into another function as we just need it to print the menu as is 
         /*this shows each items and its price 
         for example we used pushback to push the item to the next part of the memory after that we added burger to the foodname then we made its price 50 pounds this is why i used the vector library
         */
         
-        items.push_back(food("burger",50))
-        items.push_back(food("pizza",100.5))
-        items.push_back(food("vcola",700.5))
-        items.push_back(food("basbosa",500.5))
-        items.push_back(food("basbosa eshta",700.5))
-        items.push_back(food("sambosa",500))
-        items.push_back(food("fries",900))
-        items.push_back(food("batats",400))
+        items.push_back(food("burger",50));
+        items.push_back(food("pizza",100.5));
+        items.push_back(food("vcola",700.5));
+        items.push_back(food("basbosa",500.5));
+        items.push_back(food("basbosa eshta",700.5));
+        items.push_back(food("sambosa",500));
+        items.push_back(food("fries",900));
+        items.push_back(food("batats",400));
         //add more items ya gd3an 
 }
     //this is a loop to show the menu 
@@ -45,12 +44,13 @@ class Menu{
             cout << items[i].findname() << items[i].findprice()<<endl;
             }
 }
+};
 //to test this dy tagrobah emsa7oha lma t3mlo el ba2y
 int main()
 { 
     Menu menu;
     menu.lmenu();
-    menu.showthemenu():
+    menu.showthemenu();
     return 0;
     
 }
