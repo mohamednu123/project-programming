@@ -46,6 +46,8 @@ class Menu{
         for (int i = 0; i < size;i++){
             cout <<i+1 << "--" << items[i].findname() << " - " << items[i].findprice()<< " l.e" << endl;
             }
+ Food getItem(int choice) {
+        return items[choice - 1];
 }
 };
 //to test this dy tagrobah emsa7oha lma t3mlo el ba2y
