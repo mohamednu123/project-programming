@@ -37,7 +37,8 @@ class Menu{
         items[5] = food("Fries", 900);
         items[6] = food("Batats", 400);
         size = 7;
-        
+
+
         //add more items ya gd3an 
 }
     //this is a loop to show the menu 
@@ -46,16 +47,88 @@ class Menu{
         for (int i = 0; i < size;i++){
             cout <<i+1 << "--" << items[i].findname() << " - " << items[i].findprice()<< " l.e" << endl;
             }
- Food getitem(int choice) {
-        return items[choice - 1]; //array doesnt show as human language so this is to get array 0, 1, 2 if user chooses choice 1 it will show array[0]
-}
+// =====  nege Le Order Class =====
+class Order{
+//  array to store el order and elkmeh for on item
+
+private:
+    food orders[40];
+    int quantity[40];
+    int count = 0;
+
+public:
+    // function to add order by arranged in array
+    void addorder(food item, int qty)
+    {
+        orders[count] = item;
+        quantity[count] = qty;
+        count++;
+    }
+    // function to show the chooeses of customar from items  with price
+    void showorder(){
+        
+        float total = 0;
+        cout << "\nThis is your order:\n";
+        
+        //loop for print many order items with price
+        for(int i = 0; i < count; i++)
+        {
+            cout << i + 1 << "--" // print num of order
+                 << orders[i].findname()
+                 << " x " << quantity[i]
+                 << " ==> "
+                 << orders[i].findprice() <<" x " << quantity[i]
+                 << " l.e" << endl;
+
+            total += orders[i].findprice() * quantity[i];
+        }
+        cout << "\nTotal Price = " << total << " l.e" << endl;
+    }
 };
-//to test this dy tagrobah emsa7oha lma t3mlo el ba2y
+
+//to implement the classes
 int main()
-{ 
+{
     Menu menu;
     menu.lmenu();
-    menu.showthemenu();
+    Order order;
+    int choice; //variable for num item
+    int quantity;
+    char again;
+    // start the biggest loop ()
+    do{
+        menu.showthemenu();
+        //small loop to enter num of item and if the num invalid donot show menu again then repeat cin tany.
+        do {
+            cout << "Enter the item number: "<<endl;
+            cin >> choice;
+
+            if(choice < 1 || choice > 10) {
+
+                cout << "Invalid item number!\n";
+            }
+        } while (choice < 1 || choice > 10);
+
+            cout << "Enter quantity: ";
+            cin >> quantity;
+            order.addorder(menu.getitem(choice),quantity);
+         //another small loop to ask him if he want to pack up another item or not
+        do{
+            cout << "\nDo you want to order again? (y/n): ";
+            cin >> again;
+
+            if(again != 'y' && again != 'Y' &&
+               again != 'n' && again != 'N')
+            {
+                cout << "Invalid input! Please enter y or n only.\n";
+            }
+
+        }while(again != 'y' && again != 'Y' &&
+               again != 'n' && again != 'N');
+
+    }while(again == 'y' || again == 'Y'); //==> the end of biggest loop , this line mein if he write "y" ykrr eltalb tany
+
+    order.showorder();// ==> show all order which castumar choose 
+
     return 0;
-    
 }
