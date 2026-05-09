@@ -1,61 +1,61 @@
 #include <iostream>
 
 using namespace std;
-//memory management and adds .push_back(x)   adds .size() for number of elements adds .clear() to remove all elements adds .erase() to remove specific elements and works with algorithms like sort and find
-//we could have used arrays but that would make it harder to add new items would only limit us to a few items if we wanted to add more it would make us redo the code 
+
 class food{
-private:    
+private:
     string foodname;
     float price;
-    
-public: 
-//these are 3 funtions function to return food name and price 
+public:
+//these are 3 funtions function to return food name and price
      food() : foodname(""),price(0){}
      food(string n, double p) : foodname(n), price(p){} //inittialize the food items gives the private part of it the names "n and p" to be called to the outside funtions
      string findname(){return foodname;}
-     
      float findprice(){return price;}
 };
-
 //now we want to display the items with the second class menu
 class Menu{
     private :
    food items[10];
-   int size = 0;// this is a dynamic array 
+   int size = 0;// this is a dynamic array
     public :
     void lmenu(){
-        //we dont need to return this into another function as we just need it to print the menu as is 
-        /*this shows each items and its price 
+        //we dont need to return this into another function as we just need it to print the menu as is
+        /*this shows each items and its price
         for example we used pushback to push the item to the next part of the memory after that we added burger to the foodname then we made its price 50 pounds this is why i used the vector library
         */
-        
-        items[0] = food("burger",50);
-        items[1] = food("Vcola", 700.5);
-        items[2] = food("Basbosa", 500.5);
-        items[3] = food("Basbosa Eshta", 700.5);
-        items[4] = food("Sambosa", 500);
-        items[5] = food("Fries", 900);
-        items[6] = food("Batats", 400);
-        size = 7;
+        items[0] = food("s.fol",10);
+         items[1] = food("s.flafle", 12);
+          items[2] = food("s.gbna ", 12);
+           items[3] = food("s.btats ", 15);
+            items[4] = food("s.egg", 12);
+             items[5] = food("s.baba ghanog", 12);
+              items[6] = food("talb fol ", 45);
+               items[7] = food("talb fol and btats", 55);
+               items[8] = food("talb fol ,btats and flafle", 65);
+                items[9] = food("talb fol ,btats, flafle and eggs", 75);
 
-
-        //add more items ya gd3an 
+        size = 10;
 }
-    //this is a loop to show the menu 
+    //this is a loop to show the menu
     void showthemenu(){
         cout<<"This is the menu:\n";
         for (int i = 0; i < size;i++){
             cout <<i+1 << "--" << items[i].findname() << " - " << items[i].findprice()<< " l.e" << endl;
             }
+}
+
+food getitem(int index){
+    return items[index - 1];
+}
 // =====  nege Le Order Class =====
+};
 class Order{
 //  array to store el order and elkmeh for on item
-
 private:
     food orders[40];
     int quantity[40];
     int count = 0;
-
 public:
     // function to add order by arranged in array
     void addorder(food item, int qty)
@@ -66,10 +66,8 @@ public:
     }
     // function to show the chooeses of customar from items  with price
     void showorder(){
-        
         float total = 0;
         cout << "\nThis is your order:\n";
-        
         //loop for print many order items with price
         for(int i = 0; i < count; i++)
         {
@@ -79,13 +77,11 @@ public:
                  << " ==> "
                  << orders[i].findprice() <<" x " << quantity[i]
                  << " l.e" << endl;
-
             total += orders[i].findprice() * quantity[i];
         }
         cout << "\nTotal Price = " << total << " l.e" << endl;
     }
 };
-
 //to implement the classes
 int main()
 {
@@ -100,15 +96,12 @@ int main()
         menu.showthemenu();
         //small loop to enter num of item and if the num invalid donot show menu again then repeat cin tany.
         do {
-            cout << "Enter the item number: "<<endl;
+            cout << endl << "Enter the item number: ";
             cin >> choice;
-
-            if(choice < 1 || choice > 10) {
-
+            if(choice < 1 || choice > 7) {
                 cout << "Invalid item number!\n";
             }
-        } while (choice < 1 || choice > 10);
-
+        } while (choice < 1 || choice > 7);
             cout << "Enter quantity: ";
             cin >> quantity;
             order.addorder(menu.getitem(choice),quantity);
@@ -116,19 +109,14 @@ int main()
         do{
             cout << "\nDo you want to order again? (y/n): ";
             cin >> again;
-
             if(again != 'y' && again != 'Y' &&
                again != 'n' && again != 'N')
             {
-                cout << "Invalid input! Please enter y or n only.\n";
+                cout << "Invalid input Please enter y or n only \n";
             }
-
         }while(again != 'y' && again != 'Y' &&
                again != 'n' && again != 'N');
-
     }while(again == 'y' || again == 'Y'); //==> the end of biggest loop , this line mein if he write "y" ykrr eltalb tany
-
-    order.showorder();// ==> show all order which castumar choose 
-
+    order.showorder();//==> show all order which castumar choose
     return 0;
 }
