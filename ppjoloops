@@ -8,7 +8,7 @@ private:
     float price;
 public:
 //these are 3 funtions function to return food name and price
-     food() : foodname(""),price(0){}
+     food() : foodname(),price(0){}
      food(string n, double p) : foodname(n), price(p){} //inittialize the food items gives the private part of it the names "n and p" to be called to the outside funtions
      string findname(){return foodname;}
      float findprice(){return price;}
